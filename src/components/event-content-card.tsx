@@ -1,76 +1,49 @@
 import Image from "next/image";
-import {
-  Typography,
-  Card,
-  CardHeader,
-  CardBody,
-  Avatar,
-} from "@material-tailwind/react";
 
 interface EventContentCardProps {
   title: string;
   des: string;
-  name: string;
-  position: string;
-  panel: string;
   img: string;
 }
-export function EventContentCard({
+
+export default function EventContentCard({
   title,
   des,
-  name,
-  position,
-  panel,
   img,
 }: EventContentCardProps) {
   return (
-    <Card
-      color="transparent"
-      shadow={false}
-      className="lg:!flex-row mb-10 lg:items-end"
-    >
-      <CardHeader
-        floated={false}
-        shadow={false}
-        className="h-[32rem] max-w-[28rem] shrink-0"
-      >
-        <Image
-          width={768}
-          height={768}
+    <div className="flex flex-col md:flex-row items-center gap-8 bg-gray-800 p-8 bg-white text-gray-50 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+      {/* Image */}
+      <div className="w-full md:w-1/3">
+        <img
           src={img}
-          alt="testimonial image"
-          className="h-full w-full object-cover"
+          alt={title}
+          className="w-full h-auto rounded-lg shadow-lg shadow-teal-700"
         />
-      </CardHeader>
-      <CardBody className="col-span-full lg:col-span-3">
-        <Typography variant="h6" color="blue-gray" className="mb-4">
-          {panel}
-        </Typography>
-        <Typography variant="h2" color="blue-gray" className="mb-4 font-medium">
-          {title}
-        </Typography>
-        <Typography className="mb-12 md:w-8/12 font-medium !text-gray-500">
-          {des}
-        </Typography>
-        <div className="flex items-center gap-4">
-          <Avatar
-            variant="circular"
-            src="/logos/spotify-logo.png"
-            alt="spotify"
-            size="lg"
-          />
-          <div>
-            <Typography variant="h6" color="blue-gray" className="mb-0.5">
-              {name}
-            </Typography>
-            <Typography variant="small" className="font-normal !text-gray-500">
-              {position}
-            </Typography>
-          </div>
-        </div>
-      </CardBody>
-    </Card>
+      </div>
+
+      {/* Content */}
+      <div className="w-full md:w-2/3">
+        <h2 className="text-3xl font-bold mb-4">{title}</h2>
+        <p className="text-gray-50 mb-6">{des}</p>
+        <button
+          className="relative 
+                bg-gradient-to-r 
+                from-teal-700 
+                to-teal-900 
+                px-8 
+                py-3 
+                text-white 
+                font-semibold 
+                rounded-full 
+                shadow-lg 
+                hover:shadow-teal-500/50 
+                transition-shadow 
+                duration-300"
+        >
+          Explorar Sesión
+        </button>
+      </div>
+    </div>
   );
 }
-
-export default EventContentCard;

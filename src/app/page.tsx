@@ -1,5 +1,9 @@
 // components
 import { Navbar, Footer } from "@/components";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+
+
 
 // sections
 import Hero from "./hero";
@@ -11,15 +15,15 @@ import Faq from "./faq";
 
 export default function Portfolio() {
   return (
-    <>
+    <main className={inter.className}>
       <Navbar />
       <Hero />
-      <SponsoredBy />
+      {/* <SponsoredBy />
       <AboutEvent />
-      <OurStats />
+      <OurStats /> */}
       <EventContent />
       <Faq />
       <Footer />
-    </>
+    </main>
   );
 }
