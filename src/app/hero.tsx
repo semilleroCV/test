@@ -70,8 +70,9 @@ export default function Hero() {
           md:flex-row 
           items-center 
           justify-between 
+          h-full
           w-full 
-          max-w-7xl
+          max-w-8xl
           rounded-3xl 
           bg-white/10 
           backdrop-blur-md 
@@ -113,11 +114,12 @@ export default function Hero() {
               md:text-7xl 
               font-extrabold 
               bg-gradient-to-r 
-              from-teal-200 
+              from-teal-300 
               to-teal-400
               bg-clip-text 
               text-transparent 
               drop-shadow-md
+              mr-40
             "
           >
             Hands-on
@@ -153,10 +155,11 @@ export default function Hero() {
                 bg-gradient-to-r 
                 from-teal-700 
                 to-teal-900 
-                px-8 
-                py-3 
-                text-white 
-                font-semibold 
+                px-16 
+                py-6 
+                text-white
+                text-xl
+                font-bold 
                 rounded-full 
                 shadow-lg 
                 hover:shadow-teal-500/50
@@ -167,30 +170,7 @@ export default function Hero() {
             >
               Incríbete
             </Button>
-            <Button
-              size="lg"
-              variant="text"
-              className="
-                relative 
-                border 
-                border-white/30 
-                bg-white/10 
-                backdrop-blur-sm 
-                px-8 
-                py-3 
-                text-white 
-                font-semibold 
-                rounded-full 
-                shadow-lg 
-                hover:bg-white/20 
-                hover:shadow-white/20 
-                hover:scale-105
-                transition-transform
-                duration-300
-              "
-            >
-              Leer más
-            </Button>
+            
           </div>
         </div>
 

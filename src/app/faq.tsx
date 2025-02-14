@@ -6,12 +6,12 @@ import { Typography } from "@material-tailwind/react";
 
 export function Faq() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-16 px-8 overflow-hidden">
+    <section className="relative flex items-center justify-center pt-4 pb-40 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-900 to-black" />
 
       {/* Floating blobs for a dynamic feel */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-teal-900 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-[float_8s_ease-in-out_infinite]" />
+      <div className="absolute top-0 left-0 w-72 h-72 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-[float_8s_ease-in-out_infinite]" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-green-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-[float_8s_ease-in-out_infinite_2s]" />
 
       {/* Glassmorphism Card */}
@@ -35,7 +35,7 @@ export function Faq() {
           md:px-16 
           py-12">
         {/* Person's Photo */}
-        <div className="w-full md:w-1/3 mb-8 md:mb-0 relative overflow-hidden rounded-lg shadow-lg">
+        <div className="w-full md:w-1/3 mb-8 md:mb-0 relative overflow-hidden rounded-lg">
           <Image
             src="/logos/author.png" 
             alt="Person in charge"

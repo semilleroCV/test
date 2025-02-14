@@ -4,43 +4,42 @@ import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 
-// Datos de ejemplo para las áreas de investigación
 const RESEARCH_AREAS = [
   {
-    title: "Inteligencia Artificial",
-    image: "/images/ai.jpg", 
-    description: "Explora los avances en IA y sus aplicaciones en la vida cotidiana.",
+    title: "Imágenes sin visibilidad directa",
+    image: "/image/areas/nlos.png", 
+    description: "Mira a través de las paredes: tecnología para ver más allá de los obstáculos.",
   },
   {
-    title: "Machine Learning",
-    image: "/images/ml.jpg",
-    description: "Descubre cómo los algoritmos aprenden de los datos.",
+    title: "Estimación de la profundidad",
+    image: "/image/areas/depth.jpg",
+    description: "Profundiza en el mundo 3D: algoritmos que miden distancias con precisión.",
   },
   {
-    title: "Robótica",
-    image: "/images/robotics.jpg",
-    description: "Innovación en robótica y automatización de procesos.",
+    title: "NLP",
+    image: "/image/areas/nlp.png",
+    description: "Comunícate con las máquinas: inteligencia que entiende el lenguaje humano.",
   },
   {
-    title: "Ciencia de Datos",
-    image: "/images/data-science.jpg",
-    description: "Análisis y visualización de grandes volúmenes de datos.",
+    title: "Segmentación de materiales",
+    image: "/image/areas/segmentation.png",
+    description: "Segmenta a con alta precisión: identificación meticulosa de materiales en imágenes.",
   },
   {
-    title: "Realidad Virtual",
-    image: "/images/vr.jpg",
-    description: "Tecnologías inmersivas para educación y entretenimiento.",
+    title: "Imágenes espectrales",
+    image: "/image/areas/spectral.jpg",
+    description: "Más allá del RGB: captura el espectro completo de la luz.",
   },
   {
-    title: "Blockchain",
-    image: "/images/blockchain.jpg",
-    description: "Seguridad y transparencia en transacciones digitales.",
+    title: "Imágenes térmicas",
+    image: "/image/areas/thermal.webp",
+    description: "Visualiza a través del calor: tecnología que revela lo invisible al ojo humano.",
   },
 ];
 
 export function ResearchAreas() {
   return (
-    <section className="py-8 px-8 lg:py-20 bg-black">
+    <section className="pb-8 px-8 lg:pb-48 bg-black">
       <div className="container mx-auto text-center">
         <Typography
           variant="h2"
@@ -59,13 +58,12 @@ export function ResearchAreas() {
               viewport={{ once: true }}
               className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
-              <div className="relative h-64">
+              <div className="relative h-96 transition-transform duration-300 hover:scale-110">
                 <Image
                   src={area.image}
                   alt={area.title}
                   layout="fill"
                   objectFit="cover"
-                  className="transition-transform duration-300 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
               </div>
