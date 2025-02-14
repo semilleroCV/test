@@ -116,7 +116,7 @@ export default function EventContent() {
                 key={session.id}
                 value={session.id}
                 onClick={() => setActiveSession(session.id)}
-                className={`relative mx-2 font-medium text-white hover:bg-teal-700 transition-colors duration-300 rounded-lg ${
+                className={`relative mx-2 sm: font-medium text-white hover:bg-teal-700 transition-colors duration-300 rounded-lg ${
                   activeSession === session.id ? "text-teal-900 shadow-lg" : ""
                 }`}
               >

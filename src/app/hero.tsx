@@ -8,14 +8,12 @@ export default function Hero() {
   const [isClient, setIsClient] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Use a ref for the container so we can calculate offset
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Capture mouse movement inside the container
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -24,10 +22,8 @@ export default function Hero() {
     setMousePos({ x, y });
   };
 
-  // Calculate rotation angles based on mouse position
-  // Feel free to tweak the multiplier for more/less tilt
-  const rotateX = (mousePos.y / window.innerHeight - 0.5) * 10; 
-  const rotateY = (mousePos.x / window.innerWidth - 0.5) * 10;  
+  const rotateX = (mousePos.y / window.innerHeight - 0.5) * 10;
+  const rotateY = (mousePos.x / window.innerWidth - 0.5) * 10;
 
   return (
     <section
@@ -46,15 +42,13 @@ export default function Hero() {
         lg:px-16
         py-12
       "
-      style={{
-        perspective: "1000px", // Enables 3D effect
-      }}
+      style={{ perspective: "1000px" }}
     >
       {/* Background Layer */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-black">
         <div className="absolute inset-0 [background:radial-gradient(125%_125%_at_50%_10%,#003027_5%,#000_80%)]"></div>
-        
-        {/* Example colored blobs for a dynamic background */}
+
+        {/* Colored blobs */}
         <div className="absolute top-0 left-0 w-72 h-72 bg-teal-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-[float_8s_ease-in-out_infinite]"></div>
         <div className="absolute top-0 right-0 w-72 h-72 bg-green-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-[float_8s_ease-in-out_infinite_2s]"></div>
         <div className="absolute bottom-0 left-20 w-72 h-72 bg-cyan-800 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-[float_8s_ease-in-out_infinite_4s]"></div>
@@ -119,12 +113,10 @@ export default function Hero() {
               bg-clip-text 
               text-transparent 
               drop-shadow-md
-              mr-40
+              md:mr-40
             "
           >
-            Hands-on
-            <br className="hidden sm:block" />
-            Computer Vision
+            Hands-on Computer Vision
           </Typography>
 
           {/* Subheading */}
@@ -146,7 +138,7 @@ export default function Hero() {
             posibilidades ilimitadas de la visión por computadora.
           </Typography>
 
-          {/* Call to Action Buttons */}
+          {/* Call to Action Button */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Button
               size="lg"
@@ -155,10 +147,10 @@ export default function Hero() {
                 bg-gradient-to-r 
                 from-teal-700 
                 to-teal-900 
-                px-16 
-                py-6 
+                px-8 sm:px-16 
+                py-4 sm:py-6 
                 text-white
-                text-xl
+                text-lg sm:text-xl
                 font-bold 
                 rounded-full 
                 shadow-lg 
@@ -170,12 +162,11 @@ export default function Hero() {
             >
               Incríbete
             </Button>
-            
           </div>
         </div>
 
-        {/* Images on the Right */}
-        <div className="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+        {/* Right Images (Oculto en pantallas pequeñas) */}
+        <div className="hidden md:flex md:w-1/2 justify-center md:justify-end mt-8 md:mt-0">
           <div className="grid grid-cols-2 gap-6">
             {/* Column 1 */}
             <div className="flex flex-col gap-6">

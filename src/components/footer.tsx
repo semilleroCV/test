@@ -39,7 +39,7 @@ export function Footer() {
         </div>
 
         {/* Sección de logo, título y redes sociales */}
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo y título a la izquierda */}
           <div className="flex items-center gap-4">
             <Image
@@ -53,13 +53,17 @@ export function Footer() {
               Hands-on Computer Vision
             </Typography>
           </div>
-          <Image
+
+          {/* Logo UIS */}
+          <div className="flex items-center">
+            <Image
               src="/logos/uis.png"
-              alt="Tool Logo"
+              alt="UIS Logo"
               width={100}
               height={100}
-              className="rounded-md mr-32"
+              className="rounded-md"
             />
+          </div>
 
           {/* Redes sociales a la derecha */}
           <div className="flex w-fit justify-center gap-4 mt-4 md:mt-0">
@@ -106,7 +110,7 @@ export function Footer() {
           color="white"
           className="text-center mt-12 font-normal !text-gray-50"
         >
-          &copy; {CURRENT_YEAR} Made  by <a>Students ❤️</a>
+          &copy; {CURRENT_YEAR} Made by <a>Students ❤️</a>
         </Typography>
       </div>
     </footer>
