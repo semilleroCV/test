@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 
 interface EventContentCardProps {
   title: string;
@@ -12,13 +14,18 @@ export default function EventContentCard({
   img,
 }: EventContentCardProps) {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 bg-gray-800 p-8 bg-white text-gray-50 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="flex flex-col md:flex-row items-center gap-8 p-8 border-2 border-teal-800 rounded-lg text-gray-50 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+    >
       {/* Image */}
       <div className="w-full md:w-1/3">
         <img
           src={img}
           alt={title}
-          className="w-full h-auto rounded-lg shadow-lg shadow-teal-700"
+          className="w-full h-auto rounded-lg shadow-lg bg-gray-900 shadow-teal-700 hover:scale-105 transition-transform duration-300"
         />
       </div>
 
@@ -38,12 +45,13 @@ export default function EventContentCard({
                 rounded-full 
                 shadow-lg 
                 hover:shadow-teal-500/50 
-                transition-shadow 
+                hover:scale-105
+                transition-all 
                 duration-300"
         >
           Explorar Sesión
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }

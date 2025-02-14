@@ -18,8 +18,8 @@ export default function Portfolio() {
     <main className={inter.className}>
       <Navbar />
       <Hero />
-      {/* <SponsoredBy />
-      <AboutEvent />
+      <SponsoredBy />
+      {/* <AboutEvent />
       <OurStats /> */}
       <EventContent />
       <Faq />
