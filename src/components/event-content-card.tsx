@@ -18,14 +18,14 @@ export default function EventContentCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="flex flex-col md:flex-row items-center gap-8 p-8 border-2 border-teal-800 rounded-lg text-gray-50 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+      className="flex flex-col md:flex-row items-center gap-8 p-8 border-2 border-teal-800 rounded-lg text-gray-50 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300"
     >
       {/* Image */}
       <div className="w-full md:w-1/3">
         <img
           src={img}
           alt={title}
-          className="w-full h-auto rounded-lg shadow-lg bg-gray-900 shadow-teal-700 hover:scale-105 transition-transform duration-300"
+          className="w-full h-auto rounded-lg shadow-lg bg-gray-900 shadow-gray-900 hover:scale-105 transition-transform duration-300"
         />
       </div>
 

@@ -5,24 +5,31 @@ const LINKS = ["Company", "About Us", "Team", "Products", "Blog"];
 
 export function Footer() {
   return (
-    <footer className="pb-5 p-10 md:pt-10">
+    <footer className="pb-5 p-10 md:pt-10 bg-black">
       <div className="container flex flex-col mx-auto">
         <div className="flex !w-full py-10 mb-5 md:mb-20 flex-col justify-center !items-center bg-gray-900 max-w-6xl mx-auto rounded-2xl p-5 ">
           <Typography
             className="text-2xl md:text-3xl text-center font-bold "
             color="white"
           >
-            Join now and get 30% OFF!
-          </Typography>
-          <Typography
-            color="white"
-            className=" md:w-7/12 text-center my-3 !text-base"
-          >
-            Don&apos;t miss out on this exclusive offer that will end soon.
+            Únete y potencia tus conocimientos en Visión por Computadora
           </Typography>
           <div className="flex w-full md:w-fit gap-3 mt-2 flex-col md:flex-row">
-            <Button color="white" size="md">
-              buy ticket
+            <Button className="relative 
+                bg-gradient-to-r 
+                from-teal-700 
+                to-teal-900 
+                px-8 
+                py-3 
+                text-white 
+                font-semibold 
+                rounded-full 
+                shadow-lg 
+                hover:shadow-teal-500/50
+                hover:scale-105
+                transition-transform 
+                duration-300" size="lg">
+              Incríbete
             </Button>
           </div>
         </div>
@@ -32,9 +39,9 @@ export function Footer() {
             href="https://www.material-tailwind.com"
             target="_blank"
             variant="h6"
-            className="text-gray-900"
+            className="text-gray-50"
           >
-            Material Tailwind
+            Hands-on Computer Vision
           </Typography>
           <ul className="flex justify-center my-4 md:my-0 w-max mx-auto items-center gap-4">
             {LINKS.map((link, index) => (
@@ -44,7 +51,7 @@ export function Footer() {
                   href="#"
                   variant="small"
                   color="white"
-                  className="font-normal !text-gray-700 hover:!text-gray-900 transition-colors"
+                  className="font-normal !text-gray-50 hover:!text-white transition-colors"
                 >
                   {link}
                 </Typography>
@@ -52,31 +59,31 @@ export function Footer() {
             ))}
           </ul>
           <div className="flex w-fit justify-center gap-2">
-            <IconButton size="sm" color="gray" variant="text">
+            <IconButton size="sm" color="white" variant="text">
               <i className="fa-brands fa-twitter text-lg" />
             </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
+            <IconButton size="sm" color="white" variant="text">
               <i className="fa-brands fa-youtube text-lg" />
             </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
+            <IconButton size="sm" color="white" variant="text">
               <i className="fa-brands fa-instagram text-lg" />
             </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
+            <IconButton size="sm" color="white" variant="text">
               <i className="fa-brands fa-github text-lg" />
             </IconButton>
           </div>
         </div>
         <Typography
-          color="blue-gray"
-          className="text-center mt-12 font-normal !text-gray-700"
+          color="white"
+          className="text-center mt-12 font-normal !text-gray-50"
         >
           &copy; {CURRENT_YEAR} Made with{" "}
           <a href="https://www.material-tailwind.com" target="_blank">
-            Material Tailwind
+            by
           </a>{" "}
           by{" "}
           <a href="https://www.creative-tim.com" target="_blank">
-            Creative Tim
+            Students
           </a>
           .
         </Typography>

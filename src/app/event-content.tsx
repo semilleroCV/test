@@ -99,7 +99,7 @@ export default function EventContent() {
   const [activeSession, setActiveSession] = useState(SESSIONS[0].id);
 
   return (
-    <section className="pb-8 px-4 lg:pb-20 bg-black">
+    <section className="pb-8 px-4 lg:pb-20 bg-gradient-to-b from-black to-teal-900">
       <Typography
         variant="h2"
         className="text-center text-white mb-10 font-bold text-3xl md:text-4xl lg:text-5xl"
