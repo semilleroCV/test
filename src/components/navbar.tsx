@@ -40,7 +40,7 @@ const NAV_MENU = [
   { name: "Sesiones", icon: RocketLaunchIcon, href: "#" },
   { name: "Galería", icon: CameraIcon, href: "#" },
   { name: "Nosotros", icon: UserIcon, href: "#" },
-  { name: "2024", icon: ArrowRightOnRectangleIcon, href: "#" },
+  { name: "2024", icon: ArrowRightOnRectangleIcon, href: "https://semillerocv.github.io/2024/" },
 ];
 
 export function Navbar() {
