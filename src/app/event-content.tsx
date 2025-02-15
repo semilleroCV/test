@@ -11,8 +11,8 @@ const SESSIONS = [
   {
     id: "session1",
     title: "Sesión 1",
-    subject: "Sesión 1: Piloto",
-    des: "Learn the basics of Artificial Intelligence and its applications.",
+    subject: "Sesión 1: Pilot",
+    des: "Learn the basics of Computer Vision and its applications.",
     img: "/image/posters/4.png",
   },
   {

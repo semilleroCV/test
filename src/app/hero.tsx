@@ -174,7 +174,7 @@ export default function Hero() {
                 duration-300
               "
             >
-              Incríbete
+              Inscríbete
             </Button>
           </div>
         </div>
