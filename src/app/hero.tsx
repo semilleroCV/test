@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button, Typography } from "@material-tailwind/react";
 import { useEffect, useRef, useState } from "react";
@@ -22,16 +22,8 @@ export default function Hero() {
     setMousePos({ x, y });
   };
 
-  let rotateX = 0;
-  let rotateY = 0;
-  if (typeof window !== "undefined") {
-
   const rotateX = (mousePos.y / window.innerHeight - 0.5) * 10;
   const rotateY = (mousePos.x / window.innerWidth - 0.5) * 10;
-
-  }
-  
-
 
   return (
     <section
@@ -106,6 +98,9 @@ export default function Hero() {
 
           {/* Gradient Heading */}
           <Typography
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
             variant="h1"
             className="
               mb-4 
@@ -123,18 +118,15 @@ export default function Hero() {
               drop-shadow-md
               md:mr-40
             "
-            placeholder=""
-            onPointerEnterCapture={() => {}}
-            onPointerLeaveCapture={() => {}}
           >
             Hands-on Computer Vision
           </Typography>
 
           {/* Subheading */}
           <Typography
-                      placeholder=""
-                      onPointerEnterCapture={() => {}}
-                      onPointerLeaveCapture={() => {}}
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
             variant="paragraph"
             className="
               mb-8 
@@ -155,6 +147,9 @@ export default function Hero() {
           {/* Call to Action Button */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Button
+              placeholder=""
+              onPointerEnterCapture={() => {}}
+              onPointerLeaveCapture={() => {}}
               size="lg"
               className="
                 relative 
@@ -173,13 +168,8 @@ export default function Hero() {
                 transition-transform 
                 duration-300
               "
-              placeholder=""
-              onPointerEnterCapture={() => {}}
-              onPointerLeaveCapture={() => {}}
             >
-              <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
-                Incríbete
-              </a>
+              Incríbete
             </Button>
           </div>
         </div>
