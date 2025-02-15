@@ -159,9 +159,10 @@ export default function Hero() {
                 transition-transform 
                 duration-300
               "
-              href="https://tally.so/r/mObO7p"
             >
-              Incríbete
+              <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
+                Incríbete
+              </a>
             </Button>
           </div>
         </div>
