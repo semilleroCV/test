@@ -115,12 +115,18 @@ export default function Hero() {
               drop-shadow-md
               md:mr-40
             "
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
           >
             Hands-on Computer Vision
           </Typography>
 
           {/* Subheading */}
           <Typography
+                      placeholder=""
+                      onPointerEnterCapture={() => {}}
+                      onPointerLeaveCapture={() => {}}
             variant="paragraph"
             className="
               mb-8 

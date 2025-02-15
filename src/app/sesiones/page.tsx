@@ -121,8 +121,12 @@ const ParallaxCard: React.FC<{ session: any, index: number, scrollYProgress: any
                 />
             </div>
             <div className="content">
-                <Typography variant="h4" color="white" className="font-bold mb-4">{session.subject}</Typography>
-                <Typography variant="paragraph" color="gray" className="font-normal">{session.des}</Typography>
+                <Typography             placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}} variant="h4" color="white" className="font-bold mb-4">{session.subject}</Typography>
+                <Typography            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}} variant="paragraph" color="gray" className="font-normal">{session.des}</Typography>
                  <button
                     className="mt-6 relative
                         bg-gradient-to-r
@@ -161,6 +165,9 @@ const SesionesPage = () => {
         <div className="sesiones-container" ref={ref} style={{ perspective: "1000px" }}>
              <div className="bg-gradient-to-b from-black to-teal-900 absolute inset-0 -z-10 h-full w-full"></div>
             <Typography
+                        placeholder=""
+                        onPointerEnterCapture={() => {}}
+                        onPointerLeaveCapture={() => {}}
                 variant="h2"
                 className="text-center text-white mb-12 font-bold text-3xl md:text-4xl lg:text-5xl mt-20 relative z-10"
             >

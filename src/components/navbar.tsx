@@ -78,7 +78,9 @@ export function Navbar() {
             height={36}
             className="rounded-md"
           />
-          <Typography color="white" className="text-xl font-bold">
+          <Typography             placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}} color="white" className="text-xl font-bold">
             Hands-on Computer Vision
           </Typography>
         </div>

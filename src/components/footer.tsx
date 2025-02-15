@@ -10,6 +10,9 @@ export function Footer() {
         {/* Sección de llamada a la acción */}
         <div className="flex !w-full py-10 mb-5 md:mb-20 flex-col justify-center !items-center bg-gray-900 max-w-6xl mx-auto rounded-2xl p-5">
           <Typography
+                      placeholder=""
+                      onPointerEnterCapture={() => {}}
+                      onPointerLeaveCapture={() => {}}
             className="text-2xl md:text-3xl text-center font-bold"
             color="white"
           >
@@ -51,7 +54,9 @@ export function Footer() {
               height={36}
               className="rounded-md"
             />
-            <Typography as="a" variant="h6" className="text-gray-50">
+            <Typography              placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}} as="a" variant="h6" className="text-gray-50">
               Hands-on Computer Vision
             </Typography>
           </div>

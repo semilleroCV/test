@@ -52,6 +52,9 @@ export function Faq() {
             variant="h6"
             color="white"
             className="text-sm font-semibold uppercase mb-2"
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
           >
             Dirigido por
           </Typography>
@@ -60,6 +63,9 @@ export function Faq() {
           <Typography
             variant="h2"
             className="text-white font-extrabold text-3xl sm:text-4xl mb-4"
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
           >
             Hoover Fabian Rueda Chacón
           </Typography>
@@ -68,6 +74,9 @@ export function Faq() {
           <Typography
             variant="paragraph"
             className="text-gray-200 text-sm sm:text-base leading-relaxed text-justify"
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
           >
             Ingeniero de Sistemas e Informática, con maestría y doctorado en
             Ingeniería Eléctrica y Computación. Realizó su formación en Colombia y

@@ -42,6 +42,9 @@ export function ResearchAreas() {
     <section className="pb-8 px-8 lg:pb-48 bg-black">
       <div className="container mx-auto text-center">
         <Typography
+                    placeholder=""
+                    onPointerEnterCapture={() => {}}
+                    onPointerLeaveCapture={() => {}}
           variant="h2"
           color="white"
           className="mb-8 text-3xl md:text-4xl lg:text-5xl font-bold"
@@ -69,13 +72,18 @@ export function ResearchAreas() {
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
                 <Typography
+                            placeholder=""
+                            onPointerEnterCapture={() => {}}
+                            onPointerLeaveCapture={() => {}}
                   variant="h4"
                   color="white"
                   className="mb-2 text-xl font-bold"
                 >
                   {area.title}
                 </Typography>
-                <Typography color="white" className="text-sm">
+                <Typography color="white" className="text-sm"             placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}>
                   {area.description}
                 </Typography>
               </div>
