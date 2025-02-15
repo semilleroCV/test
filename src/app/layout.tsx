@@ -34,6 +34,8 @@ export default function RootLayout({
         />
         <Script id="tally-config" strategy="afterInteractive">
           {`
+          if (typeof window !== "undefined") {
+
             window.TallyConfig = {
               "formId": "mObO7p",
               "popup": {
@@ -44,6 +46,7 @@ export default function RootLayout({
                 "autoClose": 5000
               }
             };
+          }
           `}
         </Script>
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />

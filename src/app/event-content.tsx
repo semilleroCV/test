@@ -103,6 +103,9 @@ export default function EventContent() {
       <Typography
         variant="h2"
         className="text-center text-white mb-10 font-bold text-3xl md:text-4xl lg:text-5xl"
+        placeholder=""
+        onPointerEnterCapture={() => {}}
+        onPointerLeaveCapture={() => {}}
       >
         Cronograma del Semillero
       </Typography>
@@ -110,7 +113,12 @@ export default function EventContent() {
       {/* Tabs for session navigation */}
       <Tabs value={activeSession} className="mb-8">
         <div className="w-full flex mb-8 flex-col items-center">
-          <TabsHeader className="h-14 w-full md:w-auto bg-teal-900 border-2 border-teal-800 rounded-lg shadow-sm overflow-x-auto whitespace-nowrap">
+          <TabsHeader
+            className="h-14 w-full md:w-auto bg-teal-900 border-2 border-teal-800 rounded-lg shadow-sm overflow-x-auto whitespace-nowrap"
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
+          >
             {SESSIONS.map((session) => (
               <Tab
                 key={session.id}
@@ -119,6 +127,9 @@ export default function EventContent() {
                 className={`relative mx-2 sm: font-medium text-white hover:bg-teal-700 transition-colors duration-300 rounded-lg ${
                   activeSession === session.id ? "text-teal-900 shadow-lg" : ""
                 }`}
+                placeholder=""
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}
               >
                 {activeSession === session.id && (
                   <motion.div

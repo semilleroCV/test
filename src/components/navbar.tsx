@@ -50,6 +50,7 @@ export function Navbar() {
   const handleOpen = () => setOpen((cur) => !cur);
 
   useEffect(() => {
+    
     const handleScroll = () => {
       setIsScrolling(window.scrollY > 0);
     };
@@ -67,6 +68,9 @@ export function Navbar() {
         rounded-xl px-6 py-3 backdrop-blur-md border border-white/20 
         ${isScrolling ? "bg-white/10 shadow-xl" : "bg-white/5 shadow-none"}
       `}
+      placeholder=""
+      onPointerEnterCapture={() => {}}
+      onPointerLeaveCapture={() => {}}
     >
       <div className="flex items-center justify-between w-full">
         {/* Left: Logo & Title */}
@@ -118,6 +122,9 @@ export function Navbar() {
           color="white"
           onClick={handleOpen}
           className="lg:hidden"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           <svg
             className="h-6 w-6"

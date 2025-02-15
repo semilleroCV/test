@@ -22,8 +22,16 @@ export default function Hero() {
     setMousePos({ x, y });
   };
 
+  let rotateX = 0;
+  let rotateY = 0;
+  if (typeof window !== "undefined") {
+
   const rotateX = (mousePos.y / window.innerHeight - 0.5) * 10;
   const rotateY = (mousePos.x / window.innerWidth - 0.5) * 10;
+
+  }
+  
+
 
   return (
     <section

@@ -20,6 +20,9 @@ export function Footer() {
           </Typography>
           <div className="flex w-full md:w-fit gap-3 mt-2 flex-col md:flex-row">
             <Button
+              placeholder=""
+              onPointerEnterCapture={() => {}}
+              onPointerLeaveCapture={() => {}}
               className="relative 
                 bg-gradient-to-r 
                 from-teal-700 
@@ -81,7 +84,14 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="Visita nuestro canal de YouTube"
             >
-              <IconButton size="sm" color="white" variant="text">
+              <IconButton 
+                size="sm" 
+                color="white" 
+                variant="text" 
+                placeholder=""
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}
+              >
                 <i className="fa-brands fa-youtube text-xl" />
               </IconButton>
             </a>
@@ -93,7 +103,14 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="Síguenos en Instagram"
             >
-              <IconButton size="sm" color="white" variant="text">
+              <IconButton 
+                size="sm" 
+                color="white" 
+                variant="text" 
+                placeholder=""
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}
+              >
                 <i className="fa-brands fa-instagram text-xl" />
               </IconButton>
             </a>
@@ -105,7 +122,14 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="Visita nuestro repositorio en GitHub"
             >
-              <IconButton size="sm" color="white" variant="text">
+              <IconButton 
+                size="sm" 
+                color="white" 
+                variant="text" 
+                placeholder=""
+                onPointerEnterCapture={() => {}} 
+                onPointerLeaveCapture={() => {}}
+              >
                 <i className="fa-brands fa-github text-xl" />
               </IconButton>
             </a>
@@ -114,6 +138,9 @@ export function Footer() {
 
         {/* Copyright */}
         <Typography
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
           color="white"
           className="text-center mt-12 font-normal !text-gray-50"
         >
