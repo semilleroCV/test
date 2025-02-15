@@ -28,6 +28,7 @@ function NavItem({ children, href }: NavItemProps) {
       <Link
         href={href || "#"}
         className="flex items-center gap-2 font-medium text-gray-200 hover:text-white transition-all duration-300"
+        passHref={true}
       >
         {children}
       </Link>
@@ -40,7 +41,7 @@ const NAV_MENU = [
   { name: "Sesiones", icon: RocketLaunchIcon, href: "#" },
   { name: "Galería", icon: CameraIcon, href: "#" },
   { name: "Nosotros", icon: UserIcon, href: "#" },
-  { name: "2024", icon: ArrowRightOnRectangleIcon, href: "https://semillerocv.github.io/2024/" },
+  { name: "2024", icon: ArrowRightOnRectangleIcon, href: "https://semillerocv.github.io/2024" },
 ];
 
 export function Navbar() {
