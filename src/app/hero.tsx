@@ -12,7 +12,12 @@ export default function Hero() {
 
   useEffect(() => {
     setIsClient(true);
+    console.log(window.innerWidth)
   }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
