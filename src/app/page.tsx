@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 // sections
-import EventContent  "./event-content";
+import EventContent from "./event-content";
 import Hero from "./hero";
 import SponsoredBy from "./sponsored-by";
 import Faq from "./faq";
