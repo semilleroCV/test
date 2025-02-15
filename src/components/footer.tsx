@@ -33,7 +33,9 @@ export function Footer() {
                 duration-300"
               size="lg"
             >
-              Incríbete
+             <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
+                Incríbete
+              </a>
             </Button>
           </div>
         </div>

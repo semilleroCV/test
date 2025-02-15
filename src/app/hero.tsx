@@ -159,6 +159,9 @@ export default function Hero() {
                 transition-transform 
                 duration-300
               "
+              placeholder=""
+              onPointerEnterCapture={() => {}}
+              onPointerLeaveCapture={() => {}}
             >
               <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
                 Incríbete
