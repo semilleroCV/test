@@ -29,7 +29,7 @@ export default function Hero() {
 
   const rotateX = (mousePos.y / window.innerHeight - 0.5) * 10;
   const rotateY = (mousePos.x / window.innerWidth - 0.5) * 10;
-
+// 
   return (
     <section
       ref={containerRef}
