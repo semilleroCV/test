@@ -23,12 +23,26 @@ interface NavItemProps {
 }
 
 function NavItem({ children, href }: NavItemProps) {
+  const isExternal = href && (href.startsWith("http://") || href.startsWith("https://"));
+  if (isExternal) {
+    return (
+      <li>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 font-medium text-gray-200 hover:text-white transition-all duration-300"
+        >
+          {children}
+        </a>
+      </li>
+    );
+  }
   return (
     <li>
       <Link
         href={href || "#"}
         className="flex items-center gap-2 font-medium text-gray-200 hover:text-white transition-all duration-300"
-        passHref={true}
       >
         {children}
       </Link>
@@ -41,7 +55,11 @@ const NAV_MENU = [
   { name: "Sesiones", icon: RocketLaunchIcon, href: "#" },
   { name: "Galería", icon: CameraIcon, href: "#" },
   { name: "Nosotros", icon: UserIcon, href: "#" },
-  { name: "2024", icon: ArrowRightOnRectangleIcon, href: "https://semillerocv.github.io/2024" },
+  {
+    name: "2024",
+    icon: ArrowRightOnRectangleIcon,
+    href: "https://semillerocv.github.io/2024",
+  },
 ];
 
 export function Navbar() {
@@ -51,7 +69,6 @@ export function Navbar() {
   const handleOpen = () => setOpen((cur) => !cur);
 
   useEffect(() => {
-    
     const handleScroll = () => {
       setIsScrolling(window.scrollY > 0);
     };
@@ -83,9 +100,13 @@ export function Navbar() {
             height={36}
             className="rounded-md"
           />
-          <Typography             placeholder=""
+          <Typography
+            placeholder=""
             onPointerEnterCapture={() => {}}
-            onPointerLeaveCapture={() => {}} color="white" className="text-xl font-bold">
+            onPointerLeaveCapture={() => {}}
+            color="white"
+            className="text-xl font-bold"
+          >
             Hands-on Computer Vision
           </Typography>
         </div>
