@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Button, Typography } from "@material-tailwind/react";
 import { useEffect, useRef, useState } from "react";
@@ -159,6 +159,7 @@ export default function Hero() {
                 transition-transform 
                 duration-300
               "
+              href="https://tally.so/r/mObO7p"
             >
               Incríbete
             </Button>

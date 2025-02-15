@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Layout, FixedPlugin } from "@/components";
+import Script from "next/script";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,17 +24,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          defer
-          data-site="YOUR_DOMAIN_HERE"
-          src="https://api.nepcha.com/js/nepcha-analytics.js"
-        ></script>
+        <Script
+          src="https://tally.so/widgets/embed.js"
+          strategy="afterInteractive"
+          async
+        />
+        <Script id="tally-config" strategy="afterInteractive">
+          {`
+            window.TallyConfig = {
+              "formId": "mObO7p",
+              "popup": {
+                "emoji": {
+                  "text": "👋",
+                  "animation": "wave"
+                },
+                "autoClose": 5000
+              }
+            };
+          `}
+        </Script>
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
       </head>
       <body className={roboto.className}>
         <Layout>
           {children}
-          <FixedPlugin />
         </Layout>
         <link
           rel="stylesheet"
