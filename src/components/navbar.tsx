@@ -54,7 +54,7 @@ const NAV_MENU = [
   { name: "Inicio", icon: HomeIcon, href: "/" },
   { name: "Sesiones", icon: RocketLaunchIcon, href: "#" },
   { name: "Galería", icon: CameraIcon, href: "#" },
-  { name: "Nosotros", icon: UserIcon, href: "#" },
+  { name: "Nosotros", icon: UserIcon, href: "/nosotros" },
   {
     name: "2024",
     icon: ArrowRightOnRectangleIcon,

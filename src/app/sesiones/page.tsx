@@ -156,6 +156,8 @@ const SesionesPage = () => {
     const { scrollYProgress } = useScroll({ container: ref });
     const [isClient, setIsClient] = useState(false);
 
+    
+
     useEffect(() => {
         setIsClient(true);
     }, []);
