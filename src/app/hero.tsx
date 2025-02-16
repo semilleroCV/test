@@ -162,33 +162,34 @@ export default function Hero() {
 
           {/* Call to Action Button */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button
-              placeholder=""
-              onPointerEnterCapture={() => {}}
-              onPointerLeaveCapture={() => {}}
-              size="lg"
-              className="
-                relative 
-                bg-gradient-to-r 
-                from-teal-700 
-                to-teal-900 
-                px-8 sm:px-16 
-                py-4 sm:py-6 
-                text-white
-                text-lg sm:text-xl
-                font-bold 
-                rounded-full 
-                shadow-lg 
-                hover:shadow-teal-500/50
-                hover:scale-105
-                transition-transform 
-                duration-300
-              "
-            >
-                <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
+            <a href="https://tally.so/r/mObO7p" className="w-full">
+              <Button
+                placeholder=""
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}
+                size="lg"
+                className="
+                  relative 
+                  w-full
+                  bg-gradient-to-r 
+                  from-teal-700 
+                  to-teal-900 
+                  px-8 sm:px-16 
+                  py-4 sm:py-6 
+                  text-white
+                  text-lg sm:text-xl
+                  font-bold 
+                  rounded-full 
+                  shadow-lg 
+                  hover:shadow-teal-500/50
+                  hover:scale-105
+                  transition-transform 
+                  duration-300
+                "
+              >
                 Inscríbete
-              </a>
-            </Button>
+              </Button>
+            </a>
           </div>
         </div>
 

@@ -33,8 +33,9 @@ export default function EventContentCard({
       <div className="w-full md:w-2/3">
         <h2 className="text-3xl font-bold mb-4">{title}</h2>
         <p className="text-gray-50 mb-6">{des}</p>
-        <button
-          className="relative 
+        <a href="#" className="inline-block w-full sm:w-auto">
+          <button
+            className="w-full sm:w-auto relative 
                 bg-gradient-to-r 
                 from-teal-700 
                 to-teal-900 
@@ -48,9 +49,10 @@ export default function EventContentCard({
                 hover:scale-105
                 transition-all 
                 duration-300"
-        >
-          Explorar Sesión
-        </button>
+          >
+            Explorar Sesión
+          </button>
+        </a>
       </div>
     </motion.div>
   );

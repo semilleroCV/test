@@ -19,30 +19,34 @@ export function Footer() {
             Únete y potencia tus conocimientos en Visión por Computadora
           </Typography>
           <div className="flex w-full md:w-fit gap-3 mt-2 flex-col md:flex-row">
-            <Button
-              placeholder=""
-              onPointerEnterCapture={() => {}}
-              onPointerLeaveCapture={() => {}}
-              className="relative 
-                bg-gradient-to-r 
-                from-teal-700 
-                to-teal-900 
-                px-8 
-                py-3 
-                text-white 
-                font-semibold 
-                rounded-full 
-                shadow-lg 
-                hover:shadow-teal-500/50
-                hover:scale-105
-                transition-transform 
-                duration-300"
-              size="lg"
+            <a 
+              href="https://tally.so/r/mObO7p" 
+              className="w-full"
             >
-             <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
+              <Button
+                placeholder=""
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}
+                className="relative 
+                  w-full
+                  bg-gradient-to-r 
+                  from-teal-700 
+                  to-teal-900 
+                  px-8 
+                  py-3 
+                  text-white 
+                  font-semibold 
+                  rounded-full 
+                  shadow-lg 
+                  hover:shadow-teal-500/50
+                  hover:scale-105
+                  transition-transform 
+                  duration-300"
+                size="lg"
+              >
                 Inscríbete
-              </a>
-            </Button>
+              </Button>
+            </a>
           </div>
         </div>
 
