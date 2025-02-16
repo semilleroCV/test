@@ -3,6 +3,13 @@
 import { Button, Typography } from "@material-tailwind/react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Reem_Kufi_Ink } from "next/font/google";
+
+const reemKufiInk = Reem_Kufi_Ink({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 
 export default function Hero() {
   const [isClient, setIsClient] = useState(false);
@@ -124,7 +131,11 @@ export default function Hero() {
               md:mr-40
             "
           >
-            Hands-on Computer Vision
+            Hands-on{" "}
+            <span>
+              <span className={`${reemKufiInk.className} text-[1.15em] tracking-wider`}>C</span>omputer{" "}
+              <span className={`${reemKufiInk.className} text-[1.15em] tracking-wider`}>V</span>ision
+            </span>
           </Typography>
 
           {/* Subheading */}
