@@ -7,9 +7,6 @@ import { motion } from "framer-motion";
 import { Navbar, Footer } from "@/components";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
-const TEAM_MEMBERS = [
-  
-];
 
 export default function NosotrosPage() {
   return (
@@ -83,69 +80,10 @@ export default function NosotrosPage() {
         {/* Team Grid */}
         <section className="max-w-7xl mx-auto px-4 pb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TEAM_MEMBERS.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6 transform group-hover:translate-y-[-10px] transition-transform duration-300">
-                  <Typography
-                    variant="h4"
-                    className="text-white font-bold mb-2 group-hover:text-teal-300 transition-colors duration-300"
-                    placeholder=""
-                    onPointerEnterCapture={() => {}}
-                    onPointerLeaveCapture={() => {}}
-                  >
-                    {member.name}
-                  </Typography>
-                  <Typography
-                    variant="lead"
-                    className="text-teal-300 mb-4"
-                    placeholder=""
-                    onPointerEnterCapture={() => {}}
-                    onPointerLeaveCapture={() => {}}
-                  >
-                    {member.role}
-                  </Typography>
-                  <Typography
-                    className="text-gray-300 mb-4"
-                    placeholder=""
-                    onPointerEnterCapture={() => {}}
-                    onPointerLeaveCapture={() => {}}
-                  >
-                    {member.description}
-                  </Typography>
-                  <div className="flex gap-4">
-                    {Object.entries(member.social).map(([platform, url]) => (
-                      <a
-                        key={platform}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-teal-300 transform hover:scale-125 transition-all duration-300"
-                      >
-                        {platform === 'github' && <FaGithub size={24} />}
-                        {platform === 'linkedin' && <FaLinkedin size={24} />}
-                        {platform === 'twitter' && <FaTwitter size={24} />}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-teal-500/50 rounded-2xl transition-colors duration-300" />
-              </motion.div>
-            ))}
+           
+                
+              
+               
           </div>
         </section>
       </main>
