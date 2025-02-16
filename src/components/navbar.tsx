@@ -162,18 +162,18 @@ export function Navbar() {
 
       {/* Mobile Dropdown */}
       <Collapse open={open}>
-        <div className="mt-4 rounded-xl bg-white/10 backdrop-blur-md p-6 shadow-lg">
+        <div className="mt-4 bg-teal-900/95 backdrop-blur-xl p-6 rounded-xl border border-teal-800 shadow-2xl">
           <ul className="flex flex-col gap-4">
             {NAV_MENU.map(({ name, icon: Icon, href }) => (
               <NavItem key={name} href={href}>
                 <Icon className="h-5 w-5 text-teal-300" />
-                {name}
+                <span className="text-gray-100 font-medium">{name}</span>
               </NavItem>
             ))}
           </ul>
-          <div className="mt-4 flex justify-end">
+          <div className="mt-6 pt-6 border-t border-teal-800 flex justify-center">
             <a
-              href="https://discord.gg/your-invite"
+              href="https://discord.gg/MkCpdsHZzJ"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block hover:opacity-80 transition-opacity duration-300"
