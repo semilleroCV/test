@@ -175,7 +175,7 @@ export default function Hero() {
               "
             >
                 <a href="https://tally.so/r/mObO7p" className="w-full h-full flex items-center justify-center">
-                Incríbete
+                Inscríbete
               </a>
             </Button>
           </div>
