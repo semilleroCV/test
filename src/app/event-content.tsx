@@ -13,6 +13,7 @@ const SESSIONS = [
     title: "Sesión 1",
     subject: "Sesión 1: Pilot",
     des: "Introducción al semillero.",
+    img: "/image/posters/4.png",
   },
   {
     id: "session2",
@@ -196,7 +197,7 @@ export default function EventContent() {
                 key={session.id}
                 title={session.subject}
                 des={session.des}
-                img={session.img}
+                img={session.img || '/default-image.png'}
               />
             )
         )}
