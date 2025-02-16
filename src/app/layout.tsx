@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Layout, FixedPlugin } from "@/components";
 import Script from "next/script";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <GoogleAnalytics />
         <Script
           src="https://tally.so/widgets/embed.js"
           strategy="afterInteractive"
