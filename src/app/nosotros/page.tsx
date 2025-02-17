@@ -99,7 +99,7 @@ export default function NosotrosPage() {
             </Typography>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <TeamCard
-                name="Hoover Rueda"
+                name="Hoover Rueda-Chacón"
                 role="Director del Semillero"
                 image="/image/people/hoover.png"
                 socialLinks={{
