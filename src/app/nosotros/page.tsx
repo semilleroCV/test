@@ -285,11 +285,11 @@ export default function NosotrosPage() {
                 }}
               />
               <TeamCard
-                name="Valentina Pérez"
+                name="Valentina Pérez" 
                 role="Estudiante de Ingeniería Sistemas"
                 image="/image/people/valentina.jpeg"
                 socialLinks={{
-                  github: "https://github.com/semilleroCV"
+                  github: "https://github.com/valperz"
                 }}
               />
               <TeamCard
