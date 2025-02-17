@@ -74,7 +74,7 @@ export default function NosotrosPage() {
               onPointerEnterCapture={() => {}}
               onPointerLeaveCapture={() => {}}
             >
-              Impulsamos la innovación en visión por computadora, formando la próxima generación de expertos en tecnología visual a través de experiencias prácticas y colaborativas.
+              Impulsamos la innovación formando la próxima generación de expertos en computer vision a través de experiencias investigativas y colaborativas.
             </Typography>
           </motion.div>
         </section>
