@@ -53,7 +53,7 @@ function NavItem({ children, href }: NavItemProps) {
 const NAV_MENU = [
   { name: "Inicio", icon: HomeIcon, href: "/" },
   { name: "Sesiones", icon: RocketLaunchIcon, href: "#" },
-  { name: "Galería", icon: CameraIcon, href: "#" },
+  { name: "Galería", icon: CameraIcon, href: "/galeria" },
   { name: "Nosotros", icon: UserIcon, href: "/nosotros" },
   {
     name: "2024",

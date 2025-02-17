@@ -29,7 +29,6 @@ const SESSIONS = [
     des: "Despierta el poder de la inteligencia artificial en la visión por computadora",
     img: "/image/posters/8.png",
   },
-  // Add more sessions here (up to 12)
   {
     id: "session4",
     title: "Sesión 4",
