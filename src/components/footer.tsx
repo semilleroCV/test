@@ -69,7 +69,7 @@ export function Footer() {
           </div>
 
           {/* Logo UIS */}
-          <div className="w-screen flex items-center justify-center md:mr-24 sm:mr-0">
+          <div className="w-screen flex items-center justify-center md:mr-20 sm:mr-0">
             <Image
               src="/logos/uis.png"
               alt="UIS Logo"
