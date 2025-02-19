@@ -53,7 +53,7 @@ export function Footer() {
         {/* Sección de logo, título y redes sociales */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo y título a la izquierda */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-2">
             <Image
               src="/logos/logo.png"
               alt="Tool Logo"
@@ -63,13 +63,13 @@ export function Footer() {
             />
             <Typography              placeholder=""
             onPointerEnterCapture={() => {}}
-            onPointerLeaveCapture={() => {}} as="a" variant="h6" className="text-gray-50">
+            onPointerLeaveCapture={() => {}} as="a" variant="h6" className="text-gray-50 whitespace-nowrap">
               Hands-on Computer Vision
             </Typography>
           </div>
 
           {/* Logo UIS */}
-          <div className="flex items-center">
+          <div className="w-screen flex items-center justify-center md:mr-20 sm:mr-0">
             <Image
               src="/logos/uis.png"
               alt="UIS Logo"
