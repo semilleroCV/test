@@ -1,16 +1,39 @@
 "use client";
 
-import React from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { Navbar, Footer } from "@/components";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { TeamCard } from "@/components/team-card";
+import Lenis from "lenis";
 
 
 
 export default function NosotrosPage() {
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+
+    // Initialize Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easing function
+      virtualScroll: (data) => true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+    };
+  }, []);
   return (
     <>
       <Navbar />

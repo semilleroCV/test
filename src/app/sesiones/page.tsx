@@ -320,7 +320,7 @@ const SessionCard = ({
               className="transform transition-all duration-500 group-hover:translate-y-[-8px]"
             >
               <Typography
-                className="text-teal-300 text-lg text-center opacity-90 group-hover:opacity-100"
+                className="text-teal-200 text-2xl text-center opacity-90 group-hover:opacity-100"
                 placeholder=""
                 onPointerEnterCapture={() => {}}
                 onPointerLeaveCapture={() => {}}
@@ -341,8 +341,8 @@ const SessionCard = ({
             via-white/5 
             to-transparent 
             opacity-0 
-            group-hover:opacity-100 
-            transition-opacity 
+            group-hover:opacity-70 
+            transition-all
             duration-300
             pointer-events-none
             transform
