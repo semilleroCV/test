@@ -25,7 +25,7 @@
     "react-icons": "^5.4.0",
     "react-tsparticles": "^2.12.2",
     "tailwind-scrollbar": "^4.0.0",
-    "tsparticles": "^3.8.1"
+    "tsparticles": "^3.8.1",
     "react-intersection-observer": "^9.15.1",
     "react-scroll-parallax": "^3.4.5",
     "smooth-scroll": "^16.1.3",

@@ -7,7 +7,7 @@ import { Navbar } from "@/components";
 import Image from "next/image";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Container, Engine } from "@tsparticles/engine";
+import { Container, Engine, InteractivityDetect } from "@tsparticles/engine";
 
 const SESSIONS = [
   {
@@ -76,10 +76,10 @@ const ParticlesBackground = memo(() => {
       move: {
         enable: true,
         speed: 1,
-        direction: "none",
+        direction: "none" as const,
         random: false,
         straight: false,
-        outModes: { default: "bounce" },
+        outModes: { default: "bounce" as const },
       },
       number: {
         value: 150,
@@ -90,7 +90,7 @@ const ParticlesBackground = memo(() => {
       size: { value: { min: 1, max: 3 } },
     },
     interactivity: {
-      detectsOn: "window",
+      detectsOn: InteractivityDetect.window,
       events: {
         onHover: { enable: true, mode: "repulse" },
       },
@@ -295,6 +295,8 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
               <Typography
                 className="text-teal-300 text-lg text-center opacity-90 group-hover:opacity-100"
                 placeholder=""
+                onPointerEnterCapture={() => {}}
+                onPointerLeaveCapture={() => {}}
               >
                 {session.description}
               </Typography>
