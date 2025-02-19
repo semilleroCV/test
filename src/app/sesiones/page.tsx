@@ -9,7 +9,6 @@ import React, {
   memo,
 } from "react";
 import { motion } from "framer-motion";
-import { Typography } from "@material-tailwind/react";
 import { Navbar } from "@/components";
 import Image from "next/image";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
@@ -169,6 +168,8 @@ interface SessionCardProps {
   isNext: boolean;
   isPrevious: boolean;
   mousePos?: { x: number; y: number };
+  index: number;
+  onCardClick: (index: number) => void;
 }
 
 const SessionCard = ({
@@ -177,8 +178,14 @@ const SessionCard = ({
   isNext,
   isPrevious,
   mousePos,
+  index,
+  onCardClick,
 }: SessionCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [reflectionPos, setReflectionPos] = useState<{ x: number; y: number }>({
+    x: 50,
+    y: 50,
+  });
 
   const variants = {
     active: {
@@ -219,8 +226,6 @@ const SessionCard = ({
     },
   };
 
-  // Compute the inner card transform.
-  // If the card is active and we have a mouse position, rotate based on the global mouse position.
   const scale = isHovered ? 1.02 : 1;
   let cardTransform = `scale(${scale})`;
   if (isActive && mousePos) {
@@ -228,6 +233,16 @@ const SessionCard = ({
     const rotateY = ((mousePos.x / window.innerWidth) - 0.5) * 10;
     cardTransform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
   }
+
+  // Only non-active cards trigger navigation on click.
+  const handleClick = () => {
+    if (!isActive) {
+      onCardClick(index);
+    }
+  };
+
+  // For the active card, disable pointer events on the outer container.
+  const outerPointerEvents = isActive ? "none" : "auto";
 
   return (
     <motion.div
@@ -237,41 +252,28 @@ const SessionCard = ({
       }
       variants={variants}
       transition={{ duration: 0.5 }}
-      className={`
-        absolute 
-        inset-0 
-        flex 
-        items-center 
-        justify-center 
-        ${isActive ? "pointer-events-auto" : "pointer-events-none"}
-      `}
-      style={{ zIndex: isActive ? 30 : isNext || isPrevious ? 20 : 10 }}
+      className="absolute inset-0 flex items-center justify-center"
+      style={{
+        zIndex: isActive ? 30 : isNext || isPrevious ? 20 : 10,
+        pointerEvents: outerPointerEvents,
+      }}
     >
       <motion.div
-        className="
-          relative 
-          w-[60vw]
-          max-w-2xl
-          aspect-square
-          bg-gradient-to-br
-          from-white/10
-          to-white/5
-          backdrop-blur-lg 
-          rounded-lg 
-          overflow-hidden 
-          transition-all 
-          duration-300 
-          hover:shadow-2xl 
-          hover:shadow-teal-500/30
-          transform
-          preserve-3d
-          stamp-card
-          cursor-pointer
-          group
-        "
+        onClick={!isActive ? handleClick : undefined}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        style={{ transform: cardTransform, transition: "transform 0.2s ease-out" }}
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          setReflectionPos({ x, y });
+        }}
+        className="relative w-[60vw] max-w-2xl aspect-square bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-teal-500/30 transform preserve-3d stamp-card cursor-pointer group"
+        style={{
+          transform: cardTransform,
+          transition: "transform 0.2s ease-out",
+          pointerEvents: "auto",
+        }}
       >
         {/* Stamp-like border decoration */}
         <div className="absolute inset-0 stamp-border z-10">
@@ -291,70 +293,23 @@ const SessionCard = ({
               quality={100}
               sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 800px"
               loading="eager"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", filter: "brightness(1.2)" }}
               unoptimized
             />
           </div>
 
-          <div
-            className={`
-              absolute 
-              inset-0 
-              bg-gradient-to-t 
-              from-black/90 
-              via-black/50 
-              to-transparent
-              group-hover:from-black/95
-              transition-all
-              duration-500
-              z-20
-            `}
-          />
-
-          {/* Description text - hidden on mobile */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 z-30 hidden md:block">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="transform transition-all duration-500 group-hover:translate-y-[-8px]"
-            >
-              <Typography
-                className="text-teal-200 text-2xl text-center opacity-90 group-hover:opacity-100"
-                placeholder=""
-                onPointerEnterCapture={() => {}}
-                onPointerLeaveCapture={() => {}}
-              >
-                {session.description}
-              </Typography>
-            </motion.div>
-          </div>
+          {/* Lighter dark overlay for improved brightness */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent group-hover:from-black/40 transition-all duration-500 z-20" />
         </div>
 
-        {/* Reflective overlay */}
+        {/* Reflection overlay based on mouse position with reduced intensity */}
         <div
-          className={`
-            absolute 
-            inset-0 
-            bg-gradient-to-tr 
-            from-transparent 
-            via-white/5 
-            to-transparent 
-            opacity-0 
-            group-hover:opacity-70 
-            transition-all
-            duration-300
-            pointer-events-none
-            transform
-            rotate-180
-            z-40
-          `}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-40"
           style={{
             background: isHovered
-              ? "linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)"
+              ? `radial-gradient(circle at ${reflectionPos.x}% ${reflectionPos.y}%, rgba(255,255,255,0.2), transparent 70%)`
               : "none",
-            transformStyle: "preserve-3d",
-            backfaceVisibility: "hidden",
+            opacity: isHovered ? 1 : 0,
           }}
         />
       </motion.div>
@@ -362,16 +317,14 @@ const SessionCard = ({
   );
 };
 
-// ─── SESIONES PAGE ─────────────────────────────────────────────────────────
+// ─── SESIONES PAGE ─────────────────────────────────────────────
 
 export default function SesionesPage() {
-  // All hooks are now called unconditionally.
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const [isClient, setIsClient] = useState(false);
 
-  // Safely initialize mousePos (avoiding server-side window access)
   const [mousePos, setMousePos] = useState(() =>
     typeof window !== "undefined"
       ? { x: window.innerWidth / 2, y: window.innerHeight / 2 }
@@ -460,6 +413,8 @@ export default function SesionesPage() {
         <SessionCard
           key={session.id}
           session={session}
+          index={index}
+          onCardClick={(i) => setCurrentIndex(i)}
           isActive={index === currentIndex}
           isNext={index === currentIndex + 1}
           isPrevious={index === currentIndex - 1}
@@ -491,7 +446,6 @@ export default function SesionesPage() {
     [currentIndex, handleIndicatorClick]
   );
 
-  // Render a fallback UI while waiting for the client.
   if (!isClient) {
     return <div className="min-h-screen bg-black" />;
   }
