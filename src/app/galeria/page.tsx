@@ -1,11 +1,28 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  memo,
+} from "react";import Image from "next/image";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { Navbar, Footer } from "@/components";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { Container, Engine, InteractivityDetect } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
+import { MdSwipeVertical } from "react-icons/md";
+
+
+const ScrollUpIcon = () => (
+  <div className="fixed top-32 left-1/2 p-6 bg-teal-500 rounded-full shadow-lg animate-bounce">
+    <MdSwipeVertical className="text-white text-4xl" />
+  </div>
+);
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,6 +45,8 @@ const ProgressBar = ({ progress }: { progress: number }) => (
 
 export default function Home() {
   const [progress, setProgress] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
 
   useEffect(() => {
     // Set up Lenis for smooth scrolling
@@ -36,7 +55,11 @@ export default function Home() {
     lenis.on("scroll", ({ progress }: LenisScrollEvent) => {
       setProgress(progress);
       ScrollTrigger.update();
+      if (progress > 0) {
+        setHasScrolled(true);
+      }
     });
+      
 
     const raf = (time: number) => {
       lenis.raf(time);
@@ -72,6 +95,7 @@ export default function Home() {
     <main className="bg-black">
       <ProgressBar progress={progress} />
       <Navbar />
+      {!hasScrolled && <ScrollUpIcon />}
       
       <Section>
         <h1 className="reveal text-lg md:text-xl lg:text-4xl font-bold text-white text-center px-4">
