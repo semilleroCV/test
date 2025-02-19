@@ -67,9 +67,12 @@ const ParticlesBackground = memo(() => {
     });
   }, []);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    console.log(container);
-  }, []);
+  const particlesLoaded = useCallback(
+    async (container: Container | undefined) => {
+      console.log(container);
+    },
+    []
+  );
 
   const options = useMemo(
     () => ({
@@ -302,7 +305,7 @@ const SessionCard = ({
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent group-hover:from-black/40 transition-all duration-500 z-20" />
         </div>
 
-        {/* Reflection overlay based on mouse position with reduced intensity */}
+        {/* Reflection overlay with reduced intensity */}
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-40"
           style={{
@@ -330,6 +333,10 @@ export default function SesionesPage() {
       ? { x: window.innerWidth / 2, y: window.innerHeight / 2 }
       : { x: 0, y: 0 }
   );
+
+  // Refs to track touch events for swipe navigation
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
 
   useEffect(() => {
     setIsClient(true);
@@ -378,6 +385,31 @@ export default function SesionesPage() {
     },
     [isScrolling]
   );
+
+  // Touch event handlers for swipe navigation
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartXRef.current - touchEndXRef.current;
+    const threshold = 50;
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        // Swiped left => next slide
+        setCurrentIndex((prev) =>
+          Math.min(prev + 1, SESSIONS.length - 1)
+        );
+      } else {
+        // Swiped right => previous slide
+        setCurrentIndex((prev) => Math.max(prev - 1, 0));
+      }
+    }
+  };
 
   useEffect(() => {
     window.addEventListener("wheel", handleWheel, { passive: false });
@@ -466,7 +498,14 @@ export default function SesionesPage() {
         <ParticlesBackground />
 
         <div className="fixed top-0 h-screen w-full overflow-hidden">
-          <div className="relative h-full w-full">{sessionCards}</div>
+          <div
+            className="relative h-full w-full"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {sessionCards}
+          </div>
         </div>
 
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
