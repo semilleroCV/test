@@ -1,7 +1,14 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useCallback, useMemo, memo } from "react";
-import { motion, useScroll, useTransform, useSpring, MotionValue, useMotionValue, useSpring as useSmoothedSpring } from "framer-motion";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  memo,
+} from "react";
+import { motion } from "framer-motion";
 import { Typography } from "@material-tailwind/react";
 import { Navbar } from "@/components";
 import Image from "next/image";
@@ -22,14 +29,16 @@ const SESSIONS = [
     title: "De fotones a pixeles",
     location: "Fundamentos",
     image: "/image/posters/6.png",
-    description: "Generalidades sobre la adquisición y procesamiento digital de imágenes",
+    description:
+      "Generalidades sobre la adquisición y procesamiento digital de imágenes",
   },
   {
     id: 3,
     title: "Deep Learning",
     location: "IA & CV",
     image: "/image/posters/8.png",
-    description: "Despierta el poder de la inteligencia artificial en la visión por computadora",
+    description:
+      "Despierta el poder de la inteligencia artificial en la visión por computadora",
   },
   {
     id: 4,
@@ -40,18 +49,19 @@ const SESSIONS = [
   {
     id: 5,
     title: "Estimación pasiva de la profundidad",
-    description: "Explora las técnicas de estimación de profundidad sin fuentes externas",
+    description:
+      "Explora las técnicas de estimación de profundidad sin fuentes externas",
     image: "/image/posters/12.png",
   },
 ];
 
-// ─── PARTICLES BACKGROUND ──────────────────────────────────────────────
+// ─── PARTICLES BACKGROUND ─────────────────────────────────────────────
 
 const ParticlesBackground = memo(() => {
   const [init, setInit] = useState(false);
-  
+
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
+    initParticlesEngine(async (engine: Engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
@@ -62,44 +72,47 @@ const ParticlesBackground = memo(() => {
     console.log(container);
   }, []);
 
-  const options = useMemo(() => ({
-    fpsLimit: 120,
-    particles: {
-      color: { value: "#2DD4BF" },
-      links: {
-        enable: true,
-        color: "#2DD4BF",
-        distance: 120,
-        opacity: 0.2,
-        width: 1,
+  const options = useMemo(
+    () => ({
+      fpsLimit: 120,
+      particles: {
+        color: { value: "#2DD4BF" },
+        links: {
+          enable: true,
+          color: "#2DD4BF",
+          distance: 120,
+          opacity: 0.2,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none" as const,
+          random: false,
+          straight: false,
+          outModes: { default: "bounce" as const },
+        },
+        number: {
+          value: 150,
+          density: { enable: true, area: 600 },
+        },
+        opacity: { value: 0.3 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 3 } },
       },
-      move: {
-        enable: true,
-        speed: 1,
-        direction: "none" as const,
-        random: false,
-        straight: false,
-        outModes: { default: "bounce" as const },
+      interactivity: {
+        detectsOn: InteractivityDetect.window,
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+        },
+        modes: {
+          repulse: { distance: 150, duration: 0.4 },
+        },
       },
-      number: {
-        value: 150,
-        density: { enable: true, area: 600 },
-      },
-      opacity: { value: 0.3 },
-      shape: { type: "circle" },
-      size: { value: { min: 1, max: 3 } },
-    },
-    interactivity: {
-      detectsOn: InteractivityDetect.window,
-      events: {
-        onHover: { enable: true, mode: "repulse" },
-      },
-      modes: {
-        repulse: { distance: 150, duration: 0.4 },
-      },
-    },
-    detectRetina: true,
-  }), []);
+      detectRetina: true,
+    }),
+    []
+  );
 
   if (!init) return null;
 
@@ -112,15 +125,22 @@ const ParticlesBackground = memo(() => {
     />
   );
 });
-
-ParticlesBackground.displayName = 'ParticlesBackground';
+ParticlesBackground.displayName = "ParticlesBackground";
 
 // ─── STAMP BORDER COMPONENT ─────────────────────────────────────────────
 
 const StampBorder = () => (
-  <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
+  <svg
+    className="absolute inset-0 w-full h-full pointer-events-none"
+    viewBox="0 0 100 100"
+  >
     <defs>
-      <pattern id="stamp-texture" patternUnits="userSpaceOnUse" width="4" height="4">
+      <pattern
+        id="stamp-texture"
+        patternUnits="userSpaceOnUse"
+        width="4"
+        height="4"
+      >
         <path d="M0 0h1v1H0z" fill="rgba(255,255,255,0.05)" />
       </pattern>
     </defs>
@@ -151,7 +171,13 @@ interface SessionCardProps {
   mousePos?: { x: number; y: number };
 }
 
-const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: SessionCardProps) => {
+const SessionCard = ({
+  session,
+  isActive,
+  isNext,
+  isPrevious,
+  mousePos,
+}: SessionCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const variants = {
@@ -194,7 +220,7 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
   };
 
   // Compute the inner card transform.
-  // If the card is active and we have a mouse position, rotate based on global mouse position.
+  // If the card is active and we have a mouse position, rotate based on the global mouse position.
   const scale = isHovered ? 1.02 : 1;
   let cardTransform = `scale(${scale})`;
   if (isActive && mousePos) {
@@ -206,7 +232,9 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
   return (
     <motion.div
       initial="hidden"
-      animate={isActive ? "active" : isNext ? "next" : isPrevious ? "previous" : "hidden"}
+      animate={
+        isActive ? "active" : isNext ? "next" : isPrevious ? "previous" : "hidden"
+      }
       variants={variants}
       transition={{ duration: 0.5 }}
       className={`
@@ -215,11 +243,11 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
         flex 
         items-center 
         justify-center 
-        ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}
+        ${isActive ? "pointer-events-auto" : "pointer-events-none"}
       `}
       style={{ zIndex: isActive ? 30 : isNext || isPrevious ? 20 : 10 }}
     >
-      <motion.div 
+      <motion.div
         className="
           relative 
           w-[60vw]
@@ -243,7 +271,6 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
         "
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        // Use our computed transform – this will update on every global mouse move for the active card.
         style={{ transform: cardTransform, transition: "transform 0.2s ease-out" }}
       >
         {/* Stamp-like border decoration */}
@@ -264,13 +291,13 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
               quality={100}
               sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 800px"
               loading="eager"
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: "cover" }}
               unoptimized
             />
           </div>
 
-          <div 
-            className="
+          <div
+            className={`
               absolute 
               inset-0 
               bg-gradient-to-t 
@@ -281,9 +308,9 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
               transition-all
               duration-500
               z-20
-            " 
+            `}
           />
-          
+
           {/* Description text - hidden on mobile */}
           <div className="absolute bottom-0 left-0 right-0 p-8 z-30 hidden md:block">
             <motion.div
@@ -305,8 +332,8 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
         </div>
 
         {/* Reflective overlay */}
-        <div 
-          className="
+        <div
+          className={`
             absolute 
             inset-0 
             bg-gradient-to-tr 
@@ -321,13 +348,13 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
             transform
             rotate-180
             z-40
-          "
+          `}
           style={{
-            background: isHovered 
-              ? 'linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)' 
-              : 'none',
-            transformStyle: 'preserve-3d',
-            backfaceVisibility: 'hidden'
+            background: isHovered
+              ? "linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)"
+              : "none",
+            transformStyle: "preserve-3d",
+            backfaceVisibility: "hidden",
           }}
         />
       </motion.div>
@@ -338,13 +365,23 @@ const SessionCard = ({ session, isActive, isNext, isPrevious, mousePos }: Sessio
 // ─── SESIONES PAGE ─────────────────────────────────────────────────────────
 
 export default function SesionesPage() {
+  // All hooks are now called unconditionally.
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-  const scrollTimeout = useRef<NodeJS.Timeout>();
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
-  // Global mouse position state – used to compute rotation
-  const [mousePos, setMousePos] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  // Safely initialize mousePos (avoiding server-side window access)
+  const [mousePos, setMousePos] = useState(() =>
+    typeof window !== "undefined"
+      ? { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+      : { x: 0, y: 0 }
+  );
+
   useEffect(() => {
+    setIsClient(true);
+    setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
@@ -352,89 +389,112 @@ export default function SesionesPage() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const handleIndicatorClick = useCallback((index: number) => {
-    if (index !== currentIndex) {
-      setCurrentIndex(index);
-    }
-  }, [currentIndex]);
+  const handleIndicatorClick = useCallback(
+    (index: number) => {
+      if (index !== currentIndex) {
+        setCurrentIndex(index);
+      }
+    },
+    [currentIndex]
+  );
 
-  // Debounce scroll handler
-  const handleWheel = useCallback((e: WheelEvent) => {
-    e.preventDefault();
-    
-    if (isScrolling) return;
-    
-    setIsScrolling(true);
-    
-    if (scrollTimeout.current) {
-      clearTimeout(scrollTimeout.current);
-    }
-    
-    const direction = e.deltaY > 0 ? 1 : -1;
-    setCurrentIndex(prevIndex => {
-      const newIndex = Math.max(0, Math.min(prevIndex + direction, SESSIONS.length - 1));
-      return newIndex !== prevIndex ? newIndex : prevIndex;
-    });
-    
-    scrollTimeout.current = setTimeout(() => {
-      setIsScrolling(false);
-    }, 500);
-  }, [isScrolling]);
+  const handleWheel = useCallback(
+    (e: WheelEvent) => {
+      e.preventDefault();
+
+      if (isScrolling) return;
+
+      setIsScrolling(true);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      const direction = e.deltaY > 0 ? 1 : -1;
+      setCurrentIndex((prevIndex) => {
+        const newIndex = Math.max(
+          0,
+          Math.min(prevIndex + direction, SESSIONS.length - 1)
+        );
+        return newIndex !== prevIndex ? newIndex : prevIndex;
+      });
+
+      scrollTimeout.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 500);
+    },
+    [isScrolling]
+  );
 
   useEffect(() => {
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, [handleWheel]);
 
-  // Background gradients (memoized)
-  const backgroundGradients = useMemo(() => (
-    <>
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-teal-950 to-black" />
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-black/50 via-teal-900/50 to-black/50"
-        animate={{ opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
-      />
-      <motion.div
-        className="absolute inset-0"
-        style={{ background: 'radial-gradient(circle at center, rgba(20,184,166,0.2), transparent 70%)' }}
-        animate={{ opacity: [0.4, 0.7, 0.4] }}
-        transition={{ duration: 6, repeat: Infinity, repeatType: "mirror" }}
-      />
-    </>
-  ), []);
+  const backgroundGradients = useMemo(
+    () => (
+      <>
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-teal-950 to-black" />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-black/50 via-teal-900/50 to-black/50"
+          animate={{ opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
+        />
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(20,184,166,0.2), transparent 70%)",
+          }}
+          animate={{ opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 6, repeat: Infinity, repeatType: "mirror" }}
+        />
+      </>
+    ),
+    []
+  );
 
-  // Pass mousePos down to each card so that the active card can rotate accordingly.
-  const sessionCards = useMemo(() => (
-    SESSIONS.map((session, index) => (
-      <SessionCard
-        key={session.id}
-        session={session}
-        isActive={index === currentIndex}
-        isNext={index === currentIndex + 1}
-        isPrevious={index === currentIndex - 1}
-        mousePos={mousePos}
-      />
-    ))
-  ), [currentIndex, mousePos]);
+  const sessionCards = useMemo(
+    () =>
+      SESSIONS.map((session, index) => (
+        <SessionCard
+          key={session.id}
+          session={session}
+          isActive={index === currentIndex}
+          isNext={index === currentIndex + 1}
+          isPrevious={index === currentIndex - 1}
+          mousePos={mousePos}
+        />
+      )),
+    [currentIndex, mousePos]
+  );
 
-  // Progress indicators (memoized)
-  const progressIndicators = useMemo(() => (
-    SESSIONS.map((_, index) => (
-      <motion.button
-        key={index}
-        onClick={() => handleIndicatorClick(index)}
-        className="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-transform hover:scale-150"
-        animate={{
-          scale: index === currentIndex ? 1.5 : 1,
-          backgroundColor: index === currentIndex ? "rgb(20 184 166 / 0.8)" : "rgb(255 255 255 / 0.2)",
-        }}
-        transition={{ duration: 0.3 }}
-        whileHover={{ scale: 1.8 }}
-        aria-label={`Go to slide ${index + 1}`}
-      />
-    ))
-  ), [currentIndex, handleIndicatorClick]);
+  const progressIndicators = useMemo(
+    () =>
+      SESSIONS.map((_, index) => (
+        <motion.button
+          key={index}
+          onClick={() => handleIndicatorClick(index)}
+          className="w-2 h-2 rounded-full bg-white/20 cursor-pointer transition-transform hover:scale-150"
+          animate={{
+            scale: index === currentIndex ? 1.5 : 1,
+            backgroundColor:
+              index === currentIndex
+                ? "rgb(20 184 166 / 0.8)"
+                : "rgb(255 255 255 / 0.2)",
+          }}
+          transition={{ duration: 0.3 }}
+          whileHover={{ scale: 1.8 }}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      )),
+    [currentIndex, handleIndicatorClick]
+  );
+
+  // Render a fallback UI while waiting for the client.
+  if (!isClient) {
+    return <div className="min-h-screen bg-black" />;
+  }
 
   return (
     <>
@@ -450,11 +510,9 @@ export default function SesionesPage() {
         </motion.div>
 
         <ParticlesBackground />
-        
+
         <div className="fixed top-0 h-screen w-full overflow-hidden">
-          <div className="relative h-full w-full">
-            {sessionCards}
-          </div>
+          <div className="relative h-full w-full">{sessionCards}</div>
         </div>
 
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
@@ -466,16 +524,15 @@ export default function SesionesPage() {
         .stamp-card {
           position: relative;
           isolation: isolate;
-          box-shadow: 
-            0 0 0 1px rgba(255,255,255,0.1),
-            0 0 0 4px rgba(255,255,255,0.05),
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 0 4px rgba(255, 255, 255, 0.05),
             0 0 10px rgba(13, 148, 136, 0.1);
           transform-style: preserve-3d;
           perspective: 1000px;
         }
 
         .stamp-card::after {
-          content: '';
+          content: "";
           position: absolute;
           inset: 0;
           background: linear-gradient(
