@@ -1,28 +1,18 @@
 "use client";
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useMemo,
-  memo,
-} from "react";import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { Navbar, Footer } from "@/components";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { Container, Engine, InteractivityDetect } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim";
 import { MdSwipeVertical } from "react-icons/md";
 
-
 const ScrollUpIcon = () => (
-  <div className="fixed top-32 left-1/2 p-6 bg-teal-500 rounded-full shadow-lg animate-bounce">
+  <div className="fixed top-32 left-1/2 transform -translate-x-1/2 p-6 bg-teal-500 rounded-full shadow-lg animate-bounce z-50">
     <MdSwipeVertical className="text-white text-4xl" />
   </div>
 );
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,8 +35,7 @@ const ProgressBar = ({ progress }: { progress: number }) => (
 
 export default function Home() {
   const [progress, setProgress] = useState(0);
-  const [hasScrolled, setHasScrolled] = useState(false);
-
+  const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
     // Set up Lenis for smooth scrolling
@@ -55,11 +44,14 @@ export default function Home() {
     lenis.on("scroll", ({ progress }: LenisScrollEvent) => {
       setProgress(progress);
       ScrollTrigger.update();
-      if (progress > 0) {
-        setHasScrolled(true);
+
+      // Check if the user is at the top of the page
+      if (progress === 1) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
       }
     });
-      
 
     const raf = (time: number) => {
       lenis.raf(time);
@@ -89,14 +81,19 @@ export default function Home() {
         });
       }
     });
+
+    // Cleanup Lenis on unmount
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
     <main className="bg-black">
       <ProgressBar progress={progress} />
       <Navbar />
-      {!hasScrolled && <ScrollUpIcon />}
-      
+      {isAtTop && <ScrollUpIcon />}
+
       <Section>
         <h1 className="reveal text-lg md:text-xl lg:text-4xl font-bold text-white text-center px-4">
           En 2024, exploramos y profundizamos en la visión por computadora. Este es un resumen visual de las sesiones que inspiraron el aprendizaje y la innovación.
